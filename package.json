@@ -1,36 +1,40 @@
 {
-    "name": "workshop-protractor",
-    "version": "1.0.0",
-    "description": "This is a workshop about Protractor",
-    "main": "index.js",
-    "scripts": {
-        "clean": "rm -rf dist",
-        "build": "npm run clean && tsc",
-        "test": "npm run build && protractor dist/protractor/local.config.js"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/Epalaciol/protractor-workshop-2021.git"
-    },
-    "keywords": [
-        "ui-testing",
-        "dojo",
-        "practice",
-        "protractor"
-    ],
-    "author": "Esteban <esteban.1054@hotmail.com> (Epalaciol)",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/Epalaciol/protractor-workshop-2021/issues"
-    },
-    "homepage": "https://github.com/Epalaciol/protractor-workshop-2021#readme",
-    "devDependencies": {
-        "@types/jasminewd2": "^2.0.8",
-        "@types/node": "^14.14.22",
-        "protractor": "^7.0.0",
-        "typescript": "^4.1.3"
-    },
-    "dependencies": {
-        "jasmine-spec-reporter": "^6.0.0"
-    }
+  "name": "workshop-protractor",
+  "version": "1.0.0",
+  "description": "This is a workshop about Protractor",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "npm run clean && tsc",
+    "test:local": "npm run build && protractor dist/protractor/local.config.js",
+    "test:headless": "npm run build && protractor dist/protractor/headless.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Epalaciol/protractor-workshop-2021.git"
+  },
+  "keywords": [
+    "ui-testing",
+    "dojo",
+    "practice",
+    "protractor"
+  ],
+  "author": "Esteban <esteban.1054@hotmail.com> (Epalaciol)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Epalaciol/protractor-workshop-2021/issues"
+  },
+  "homepage": "https://github.com/Epalaciol/protractor-workshop-2021#readme",
+  "devDependencies": {
+    "@types/jasminewd2": "^2.0.8",
+    "@types/node": "^14.14.22",
+    "protractor": "^7.0.0",
+    "typescript": "^4.1.3"
+  },
+  "dependencies": {
+    "jasmine-spec-reporter": "^6.0.0"
+  },
+  "directories": {
+    "test": "test"
+  }
 }
