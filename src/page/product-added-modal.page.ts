@@ -1,4 +1,4 @@
-import { $, ElementFinder } from 'protractor';
+import { $, browser, ElementFinder, ExpectedConditions } from 'protractor';
 
 export class ProductAddedModal {
   private productAdded: ElementFinder;
@@ -8,6 +8,8 @@ export class ProductAddedModal {
   }
 
   public async addProduct(): Promise<void> {
+    await browser.wait(ExpectedConditions.elementToBeClickable(this.productAdded), 5000)
+
     await this.productAdded.click();
   }
 }

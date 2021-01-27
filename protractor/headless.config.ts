@@ -1,4 +1,4 @@
-import { browser, Config } from 'protractor';
+import { browser, Config, ExpectedConditions } from 'protractor';
 import { reporter } from './helpers/reporter';
 
 export const config: Config = {
@@ -17,7 +17,7 @@ export const config: Config = {
   },
   onPrepare: () => {
     reporter();
-    browser.manage().timeouts().implicitlyWait(3000);
+    browser.manage().timeouts().implicitlyWait(0);
     browser.ignoreSynchronization = true;
   }
 };
