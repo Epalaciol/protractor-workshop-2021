@@ -23,9 +23,6 @@ describe('Buy a t-shirt', () => {
   const shippingStep: ShippingStep = new ShippingStep();
   const signInStep: SignInStep = new SignInStep();
   const summaryStepPage: SummaryStepPage = new SummaryStepPage();
-  beforeEach(() => {
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = 120000;
-  });
 
   it('then should be bought a t-shirt', async () => {
     await browser.get("http://automationpractice.com/");
