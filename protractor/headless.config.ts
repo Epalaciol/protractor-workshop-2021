@@ -7,7 +7,7 @@ export const config: Config = {
   getPageTimeout:1000,
   SELENIUM_PROMISE_MANAGER: false,
   capibilities:{
-    browserName: 'chrome',
+    browserName: 'edge',
     chromeOptions: {
       args: ['--headless','--disable-gpu']
     }
