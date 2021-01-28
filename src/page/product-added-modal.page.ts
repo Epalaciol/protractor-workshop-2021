@@ -8,7 +8,7 @@ export class ProductAddedModal {
   }
 
   public async addProduct(): Promise<void> {
-    await browser.wait(ExpectedConditions.elementToBeClickable(this.productAdded), 5000)
+    await browser.wait(ExpectedConditions.elementToBeClickable(this.productAdded), 8000)
 
     await this.productAdded.click();
   }

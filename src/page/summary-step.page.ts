@@ -1,4 +1,4 @@
-import { $, ElementFinder } from "protractor";
+import { $, ElementFinder, browser, ExpectedConditions } from "protractor";
 
 export class SummaryStepPage {
   private summaryStep: ElementFinder;
@@ -8,5 +8,6 @@ export class SummaryStepPage {
   }
 
   public async nextStep(): Promise<void> {
+    await browser.wait(ExpectedConditions.elementToBeClickable(this.summaryStep), 8000)
     await this.summaryStep.click();
   }}

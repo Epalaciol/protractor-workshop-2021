@@ -4,10 +4,11 @@
     "description": "This is a workshop about Protractor",
     "main": "index.js",
     "scripts": {
-        "clean": "rm -rf dist && rm -rf reports",
+        "clean": "rm -rf dist && rm -rf awesome-report",
         "build": "npm run clean && tsc",
         "test:local": "npm run build && protractor dist/protractor/local.config.js",
-        "test:headless": "npm run build && protractor dist/protractor/headless.config.js"
+        "test:headless": "npm run build && protractor dist/protractor/headless.config.js",
+        "test:saucelabs": "npm run build && protractor dist/protractor/saucelabs.config.js"
     },
     "repository": {
         "type": "git",
