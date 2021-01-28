@@ -25,7 +25,7 @@ describe("Abrir el navegador", () => {
     beforeAll(async () => {
       await menuContentPage.goToTShirtMenu();
       //product-list
-      await productListPage.goToItem();
+      await productListPage.selectProduct("Faded Short Sleeve T-shirts");
 
       await browser.sleep(3000);
       //add to car
