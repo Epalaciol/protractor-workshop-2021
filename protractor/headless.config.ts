@@ -1,4 +1,4 @@
-import { browser, Config, ExpectedConditions } from 'protractor';
+import { browser, Config} from 'protractor';
 import { reporter } from './helpers/reporter';
 
 export const config: Config = {

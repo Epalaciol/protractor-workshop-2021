@@ -1,50 +1,74 @@
-import {browser } from "protractor";
+import { browser } from "protractor";
 import {
-  AddressStepPage,
-  BankPaymentPage,
   MenuContentPage,
-  OrderSummaryPage,
-  PaymentStepPage,
-  ProductAddedModal,
   ProductListPage,
-  ShippingStep,
-  SignInStep,
+  ProductAddedModal,
   SummaryStepPage,
+  SignInStep,
+  AddressStepPage,
+  ShippingStep,
+  PaymentStepPage,
+  BankPaymentPage,
+  OrderSummaryPage,
 } from "../src/page";
 
-describe('Buy a t-shirt', () => {
-  const addressStepPage: AddressStepPage = new AddressStepPage();
-  const bankPaymentPage: BankPaymentPage = new BankPaymentPage();
-  const menuContentPage: MenuContentPage = new MenuContentPage();
-  const orderSummaryPage: OrderSummaryPage = new OrderSummaryPage();
-  const paymentStepPage: PaymentStepPage = new PaymentStepPage();
-  const productAddedModal: ProductAddedModal = new ProductAddedModal();
-  const productListPage: ProductListPage = new ProductListPage();
-  const shippingStep: ShippingStep = new ShippingStep();
-  const signInStep: SignInStep = new SignInStep();
-  const summaryStepPage: SummaryStepPage = new SummaryStepPage();
-
-  it('then should be bought a t-shirt', async () => {
+describe("Abrir el navegador", () => {
+  beforeAll(async () => {
     await browser.get("http://automationpractice.com/");
-    await menuContentPage.goToTShirtMenu();
+  });
 
-    await productListPage.goToItem();
+  describe("Proceso de compra de la Camiseta", () => {
+    const menuContentPage: MenuContentPage = new MenuContentPage();
+    const productListPage: ProductListPage = new ProductListPage();
+    const productAddedModal: ProductAddedModal = new ProductAddedModal();
+    const summaryStepPage: SummaryStepPage = new SummaryStepPage();
+    beforeAll(async () => {
+      await menuContentPage.goToTShirtMenu();
+      //product-list
+      await productListPage.goToItem();
 
-    await productAddedModal.addProduct();
+      await browser.sleep(3000);
+      //add to car
+      await productAddedModal.addProduct();
 
-    await summaryStepPage.nextStep();
-    //sing in
-    await signInStep.completeForm();
-    //address
-    await addressStepPage.selectAddress();
-    //shiping
-    await shippingStep.agreeTerms();
-    await shippingStep.nextStep();
-    //payment step
-    await paymentStepPage.selectPay();
-    //bank noseque
-    await bankPaymentPage.confirmOrder();
-    await expect(orderSummaryPage.result()).toBe(
-      "Your order on My Store is complete.");
+      //summary
+      await summaryStepPage.nextStep();
+    });
+
+    describe("Logeo de la aplicacion", () => {
+      const signInStep: SignInStep = new SignInStep();
+      beforeAll(async () => {
+        //sing in
+        await signInStep.completeForm();
+      });
+
+      describe("Seleccionar la dirección por defecto", () => {
+        const addressStepPage: AddressStepPage = new AddressStepPage();
+        const shippingStep: ShippingStep = new ShippingStep();
+        beforeAll(async () => {
+          //address
+          await addressStepPage.selectAddress();
+          //shiping
+          await shippingStep.agreeTerms();
+          await shippingStep.nextStep();
+        });
+
+        describe("Pago en el Banco ", () => {
+          const paymentStepPage: PaymentStepPage = new PaymentStepPage();
+          const bankPaymentPage: BankPaymentPage = new BankPaymentPage();
+          const orderSummaryPage: OrderSummaryPage = new OrderSummaryPage();
+          it("then should be bought a t-shirt", async () => {
+            //payment step
+            await paymentStepPage.selectPay();
+            //bank
+            await bankPaymentPage.confirmOrder();
+
+            await expect(orderSummaryPage.result()).toBe(
+              "Your order on My Store is complete."
+            );
+          });
+        });
+      });
+    });
   });
 });
